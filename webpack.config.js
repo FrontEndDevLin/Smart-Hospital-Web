@@ -2,7 +2,7 @@
  * @Author: Obital 
  * @Date: 2021-08-19 18:06:07 
  * @Last Modified by: Obital
- * @Last Modified time: 2021-08-20 18:16:29
+ * @Last Modified time: 2021-08-25 18:13:15
  */
 
 let path = require("path");
@@ -150,5 +150,5 @@ module.exports = {
     historyApiFallback: true
   },
 
-  devtool: "eval-cheap-module-source-map"
+  devtool: "eval-source-map"
 }

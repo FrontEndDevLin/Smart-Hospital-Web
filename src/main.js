@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 import "./app.css";
 
-import Router from "./router";
+import { BaseRouter } from "./router/index";
 
 ReactDom.render(
-  <Router />,
+  <BaseRouter />,
   document.getElementById("app")
 );
