@@ -1,8 +1,8 @@
-import Workplace from "../components/workplace/workplace";
+import Workplace from "../pages/workplace/Workplace";
 import hospital from "./modules/hospital";
 import error from "./modules/error";
 
-import Login from "../pages/login/login";
+import Login from "../pages/login/Login";
 
 const routes = [
   {

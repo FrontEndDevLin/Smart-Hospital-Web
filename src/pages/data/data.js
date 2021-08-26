@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../../layout/data/data.less";
+
 class Data extends React.Component {
   render() {
     return <div>

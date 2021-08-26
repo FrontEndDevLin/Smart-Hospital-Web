@@ -8,9 +8,9 @@ const { Header, Footer, Sider, Content } = Layout;
 
 import { WorkplaceRouter, sideMenus } from "../../router/index";
 
-import "../../layout/basic.less";
+import "../../layout/workplace/workplace.less";
 
-import BreadcurmbNav from "./breadcurmbNav"
+import BreadcurmbNav from "./BreadcurmbNav"
 
 let _fn = {
   getSideMenuOpenKey(pathname) {
@@ -68,8 +68,8 @@ class Workplace extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Layout className="container">
-          <Header style={{ color: "#fff" }}>
+        <Layout className="workplace">
+          <Header className="header">
             Header
           </Header>
           <Layout>
