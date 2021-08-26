@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter, Link } from "react-router-dom";
 
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Dropdown } from "antd";
+import { ClockCircleOutlined } from "@ant-design/icons";
+
 const { SubMenu } = Menu;
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -9,7 +11,6 @@ const { Header, Footer, Sider, Content } = Layout;
 import { WorkplaceRouter, sideMenus } from "../../router/index";
 
 import "../../layout/workplace/workplace.less";
-
 import BreadcrumbNav from "./BreadcrumbNav"
 
 import logo from "../../static/image/logo.png";
@@ -68,6 +69,14 @@ class Workplace extends React.Component {
   }
 
   render() {
+    const userMenu = (
+      <Menu>
+        <Menu.Item key={"logout"}>
+          <div>退出登录</div>
+        </Menu.Item>
+      </Menu>
+    );
+
     return (
       <BrowserRouter>
         <Layout className="workplace">
@@ -79,6 +88,12 @@ class Workplace extends React.Component {
                 <span className="sys-title-en">Beikang Yizhong Internet smart hospital management background</span>
               </div>
             </div>
+            <Dropdown overlay={userMenu}>
+              <div className="user-menu">
+                <ClockCircleOutlined /> 
+                <span className="welcome">你好啊，死靓仔</span>
+              </div>
+            </Dropdown>
           </Header>
           <Layout>
             <Sider width="240" className="sider">
