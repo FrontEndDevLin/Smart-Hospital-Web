@@ -10,7 +10,9 @@ import { WorkplaceRouter, sideMenus } from "../../router/index";
 
 import "../../layout/workplace/workplace.less";
 
-import BreadcurmbNav from "./BreadcurmbNav"
+import BreadcrumbNav from "./BreadcrumbNav"
+
+import logo from "../../static/image/logo.png";
 
 let _fn = {
   getSideMenuOpenKey(pathname) {
@@ -70,10 +72,16 @@ class Workplace extends React.Component {
       <BrowserRouter>
         <Layout className="workplace">
           <Header className="header">
-            Header
+            <div className="logo">
+              <img src={logo} />
+              <div className="sys-title">
+                <span className="sys-title-cn">倍康益众互联网智慧医院管理后台</span>
+                <span className="sys-title-en">Beikang Yizhong Internet smart hospital management background</span>
+              </div>
+            </div>
           </Header>
           <Layout>
-            <Sider style={{ color: "#fff" }}>
+            <Sider width="240" className="sider">
               <Menu
                 mode="inline"
                 defaultOpenKeys={this.state.defaultOpenKeys}
@@ -84,11 +92,15 @@ class Workplace extends React.Component {
               </Menu>
             </Sider>
             <Layout>
-              <Content>
-                <BreadcurmbNav />
-                <WorkplaceRouter />
+              <Content className="content">
+                <BreadcrumbNav />
+                <div className="workplace-role">
+                  <WorkplaceRouter />
+                </div>
               </Content>
-              <Footer style={{ background: "#333", color: "#fff" }}>Footer</Footer>
+              <Footer className="copyright">
+                Copyright  2021 广东倍康益众信息技术有限公司
+              </Footer>
             </Layout>
           </Layout>
         </Layout>

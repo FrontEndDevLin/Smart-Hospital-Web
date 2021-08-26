@@ -1,5 +1,5 @@
-import Data from "../../pages/data/data";
-import Room from "../../pages/room/room";
+import Data from "../../pages/data/Data";
+import Room from "../../pages/room/Room";
 
 export default {
   name: "router-hospital",

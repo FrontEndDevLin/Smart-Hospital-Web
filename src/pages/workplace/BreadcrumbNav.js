@@ -3,7 +3,9 @@ import { withRouter } from "react-router-dom";
 import { Breadcrumb } from "antd";
 import { sideMenus } from "../../router/index";
 
-class BreadcurmbNav extends React.Component {
+import "../../layout/workplace/breadcrumb-nav.less";
+
+class BreadcrumbNav extends React.Component {
   render() {
     const { location } = this.props;
 
@@ -19,11 +21,11 @@ class BreadcurmbNav extends React.Component {
       }
     }
 
-    return <Breadcrumb style={{ margin: '16px 0' }}>
+    return <Breadcrumb className="breadcrumb-nav">
       <Breadcrumb.Item>{ sModuleName }</Breadcrumb.Item>
       <Breadcrumb.Item>{ sMenuName }</Breadcrumb.Item>
     </Breadcrumb>
   }
 }
 
-export default withRouter(BreadcurmbNav);
+export default withRouter(BreadcrumbNav);
