@@ -22,7 +22,7 @@ class BreadcrumbNav extends React.Component {
     }
 
     return <Breadcrumb className="breadcrumb-nav">
-      <Breadcrumb.Item>{ sModuleName }</Breadcrumb.Item>
+      <Breadcrumb.Item><span className="ant-breadcrumb-separator">/</span>{ sModuleName }</Breadcrumb.Item>
       <Breadcrumb.Item>{ sMenuName }</Breadcrumb.Item>
     </Breadcrumb>
   }
