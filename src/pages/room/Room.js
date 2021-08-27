@@ -117,7 +117,6 @@ class Room extends React.Component {
 
   componentDidMount() {
     
-    console.log("room页面加载完成");
   }
 }
 
