@@ -55,6 +55,7 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.6.3",
-    "antd": "^4.16.12"
+    "antd": "^4.16.12",
+    "axios": "^0.21.1"
   }
 }
