@@ -11,9 +11,9 @@ const requestErr = () => {
 // http request 拦截器
 request.interceptors.request.use(
   (config) => {
-    // const token = Vue.ls.get(ACCESS_TOKEN);
+    const token = "token";
     if (token) {
-      // config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = token;
       config.timeout = 50000 * 20
     }
     return config;
