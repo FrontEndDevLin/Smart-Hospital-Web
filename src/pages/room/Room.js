@@ -14,7 +14,7 @@ const dataSource = [
     key: "1",
     name: "科室名称1",
     belone: "科室1",
-    intro: "自我介绍一下",
+    intro: "科室1介绍",
     enable: true,
     createTime: "2021-8-27 16:21:05"
   },
@@ -22,7 +22,7 @@ const dataSource = [
     key: "2",
     name: "科室名称2",
     belone: "科室2",
-    intro: "介绍个锤子",
+    intro: "科室2介绍",
     enable: true,
     createTime: "2021-8-27 16:21:55"
   }
@@ -60,17 +60,33 @@ const columns = [
   {
     title: "操作",
     key: "action",
+    width: "160px",
+    align: "center",
     render: (_, item) => (
       <span>
-        <span style={{ marginRight: "10px" }}>编辑</span>
-        <span>删除</span>
+        <Button size="small" ghost type="primary" style={{ marginRight: "10px" }}>编辑</Button>
+        <Button size="small" ghost type="danger">删除</Button>
       </span>
     )
   },
 ];
 
 class Room extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedRowKeys: [],
+      loading: false,
+    }
+  }
+
   render() {
+    const rowSelection = {
+      selectedRowKeys: this.state.selectedRowKeys,
+      onChange: this.onSelectChange
+    };
+
     return <div>
       <TopBar>
         <TopBarItem>
@@ -103,13 +119,14 @@ class Room extends React.Component {
       <div>
         <ButtonBar>
           <Button type="primary">新建科室</Button>
-          <Button type="primary" disabled>批量开启</Button>
-          <Button type="primary" disabled>批量关闭</Button>
-          <Button type="danger">批量删除</Button>
+          <Button type="primary" disabled={!this.hasSelected()}>批量开启</Button>
+          <Button type="primary" disabled={!this.hasSelected()}>批量关闭</Button>
+          <Button type="danger" disabled={!this.hasSelected()}>批量删除</Button>
         </ButtonBar>
         <Table 
           dataSource={dataSource}
           columns={columns}
+          rowSelection={rowSelection}
         />
       </div>
     </div>
@@ -117,6 +134,14 @@ class Room extends React.Component {
 
   componentDidMount() {
     
+  }
+
+  onSelectChange = selectedRowKeys => {
+    this.setState({ selectedRowKeys });
+  }
+
+  hasSelected() {
+    return !!this.state.selectedRowKeys.length;
   }
 }
 
