@@ -6,7 +6,12 @@ import "./layout/common.less";
 
 import { BaseRouter } from "./router/index";
 
+import { ConfigProvider } from "antd";
+import zhCN from 'antd/lib/locale/zh_CN';
+
 ReactDom.render(
-  <BaseRouter />,
+  <ConfigProvider locale={zhCN}>
+    <BaseRouter />
+  </ConfigProvider>,
   document.getElementById("app")
 );
