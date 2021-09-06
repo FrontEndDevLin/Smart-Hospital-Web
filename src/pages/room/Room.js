@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Input, Select, DatePicker, Button, Table, Modal } from "antd";
-import { SearchOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { Input, Select, DatePicker, Button, Table } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -132,7 +132,7 @@ class Room extends React.Component {
           <Button type="primary" onClick={this.newRoom}>新建科室</Button>
           <Button type="primary" ghost disabled={!this.hasSelected()}>批量开启</Button>
           <Button type="primary" ghost disabled={!this.hasSelected()}>批量关闭</Button>
-          <Button type="danger" ghost disabled={!this.hasSelected()}>批量删除</Button>
+          <Button type="danger" ghost disabled={!this.hasSelected()} onClick={this.confirmDelItems}>批量删除</Button>
         </ButtonBar>
         <Table 
           dataSource={dataSource}
@@ -158,6 +158,16 @@ class Room extends React.Component {
 
   onEdit = (item) => {
     this.roomEditorRef.current.show(RoomEditor.HANDLE_TYPE.EDIT, item);
+  }
+
+  confirmDelItems = () => {
+    deleteConfirm().then((close) => {
+      setTimeout(() => {
+        console.log("删除复数项目");
+        console.log(this.state.selectedRowKeys);
+        close();
+      }, 1000)
+    })
   }
 
   onDel = (item) => {
