@@ -9,6 +9,8 @@ const { RangePicker } = DatePicker;
 import TopBar, { TopBarItem } from "../../components/topBar/TopBar";
 import ButtonBar from "../../components/buttonBar/ButtonBar";
 
+import RoomEditor from "./RoomEditor";
+
 const dataSource = [
   {
     key: "1",
@@ -81,6 +83,8 @@ class Room extends React.Component {
     }
   }
 
+  roomEditorRef = React.createRef();
+
   render() {
     const rowSelection = {
       selectedRowKeys: this.state.selectedRowKeys,
@@ -118,10 +122,10 @@ class Room extends React.Component {
       </TopBar>
       <div>
         <ButtonBar>
-          <Button type="primary">新建科室</Button>
-          <Button type="primary" disabled={!this.hasSelected()}>批量开启</Button>
-          <Button type="primary" disabled={!this.hasSelected()}>批量关闭</Button>
-          <Button type="danger" disabled={!this.hasSelected()}>批量删除</Button>
+          <Button type="primary" onClick={this.openEditor}>新建科室</Button>
+          <Button type="primary" ghost disabled={!this.hasSelected()}>批量开启</Button>
+          <Button type="primary" ghost disabled={!this.hasSelected()}>批量关闭</Button>
+          <Button type="danger" ghost disabled={!this.hasSelected()}>批量删除</Button>
         </ButtonBar>
         <Table 
           dataSource={dataSource}
@@ -129,6 +133,7 @@ class Room extends React.Component {
           rowSelection={rowSelection}
         />
       </div>
+      <RoomEditor ref={this.roomEditorRef} onSave={this.roomEditorOnSave}/>
     </div>
   }
 
@@ -142,6 +147,14 @@ class Room extends React.Component {
 
   hasSelected() {
     return !!this.state.selectedRowKeys.length;
+  }
+
+  openEditor = () => {
+    this.roomEditorRef.current.show(RoomEditor.HANDLE_TYPE.ADD);
+  }
+
+  roomEditorOnSave = (data) => {
+    console.log(data);
   }
 }
 
