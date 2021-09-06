@@ -7,7 +7,7 @@ import "./layout/common.less";
 import { BaseRouter } from "./router/index";
 
 import { ConfigProvider } from "antd";
-import zhCN from 'antd/lib/locale/zh_CN';
+import zhCN from "antd/lib/locale/zh_CN";
 
 ReactDom.render(
   <ConfigProvider locale={zhCN}>
