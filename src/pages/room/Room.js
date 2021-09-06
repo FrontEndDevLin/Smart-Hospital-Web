@@ -1,15 +1,20 @@
 import React from "react";
 
-import { Input, Select, DatePicker, Button, Table } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { Input, Select, DatePicker, Button, Table, Modal } from "antd";
+import { SearchOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
 import TopBar, { TopBarItem } from "../../components/topBar/TopBar";
 import ButtonBar from "../../components/buttonBar/ButtonBar";
+import TableOperateButtons from "../../components/tableOperateButtons/TableOperateButtons";
 
 import RoomEditor from "./RoomEditor";
+
+import deleteConfirm from "../../utils/confirm/deleteConfirm";
+
+let _vm = null;
 
 const dataSource = [
   {
@@ -65,17 +70,19 @@ const columns = [
     width: "160px",
     align: "center",
     render: (_, item) => (
-      <span>
-        <Button size="small" ghost type="primary" style={{ marginRight: "10px" }}>编辑</Button>
-        <Button size="small" ghost type="danger">删除</Button>
-      </span>
+      <TableOperateButtons
+        onEdit={() => { _vm.onEdit(item) }}
+        onDel={() => { _vm.onDel(item) }}
+      />
     )
-  },
+  }
 ];
 
 class Room extends React.Component {
   constructor(props) {
     super(props);
+
+    _vm = this;
 
     this.state = {
       selectedRowKeys: [],
@@ -122,7 +129,7 @@ class Room extends React.Component {
       </TopBar>
       <div>
         <ButtonBar>
-          <Button type="primary" onClick={this.openEditor}>新建科室</Button>
+          <Button type="primary" onClick={this.newRoom}>新建科室</Button>
           <Button type="primary" ghost disabled={!this.hasSelected()}>批量开启</Button>
           <Button type="primary" ghost disabled={!this.hasSelected()}>批量关闭</Button>
           <Button type="danger" ghost disabled={!this.hasSelected()}>批量删除</Button>
@@ -149,7 +156,20 @@ class Room extends React.Component {
     return !!this.state.selectedRowKeys.length;
   }
 
-  openEditor = () => {
+  onEdit = (item) => {
+    this.roomEditorRef.current.show(RoomEditor.HANDLE_TYPE.EDIT, item);
+  }
+
+  onDel = (item) => {
+    deleteConfirm().then((close) => {
+      setTimeout(() => {
+        console.log("删除项目" + item.key);
+        close();
+      }, 1000)
+    })
+  }
+
+  newRoom = () => {
     this.roomEditorRef.current.show(RoomEditor.HANDLE_TYPE.ADD);
   }
 

@@ -6,6 +6,7 @@
 * /src/pages  *页面文件*
 * /src/router *路由处理目录*
 * /src/main.js  *项目入口文件*
+* /src/utils  *工具函数*
 * /webpack.config.js  *webpack配置文件，后续优化可在里面配置*
 
 
