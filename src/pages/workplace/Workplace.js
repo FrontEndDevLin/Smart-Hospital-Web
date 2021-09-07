@@ -72,7 +72,7 @@ class Workplace extends React.Component {
     const userMenu = (
       <Menu>
         <Menu.Item key={"logout"}>
-          <div>退出登录</div>
+          <div onClick={this.logout}>退出登录</div>
         </Menu.Item>
       </Menu>
     );
@@ -125,6 +125,13 @@ class Workplace extends React.Component {
 
   componentDidMount() {
     console.log("架构完善了");
+  }
+
+  logout = () => {
+    // do sth
+    this.props.history.push({
+      pathname: "/login"
+    })
   }
 }
 

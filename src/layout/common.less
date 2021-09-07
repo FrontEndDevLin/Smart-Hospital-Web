@@ -1,3 +1,14 @@
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.clearfix::before {
+  content: "";
+  display: table;
+}
+
 .ant-modal-mask {
   z-index: 19996;
 }
