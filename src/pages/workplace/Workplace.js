@@ -114,7 +114,7 @@ class Workplace extends React.Component {
                 </div>
               </Content>
               <Footer className="copyright">
-                Copyright  2021 广东倍康益众信息技术有限公司
+                Copyright 2021 广东倍康益众信息技术有限公司
               </Footer>
             </Layout>
           </Layout>
