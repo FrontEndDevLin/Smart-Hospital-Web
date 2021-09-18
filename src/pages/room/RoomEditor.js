@@ -28,7 +28,6 @@ class RoomEditor extends React.Component {
       visible={state.bIsShowModal}
       onCancel={onCancel.bind(this)}
       onOk={onOk.bind(this)}
-      centered
     >
       hello
     </Modal>
@@ -57,6 +56,7 @@ class RoomEditor extends React.Component {
       } break;
     }
   }
+	
 }
 
 function onCancel() {

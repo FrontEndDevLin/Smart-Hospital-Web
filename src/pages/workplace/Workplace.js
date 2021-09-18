@@ -11,7 +11,7 @@ const { Header, Footer, Sider, Content } = Layout;
 import { WorkplaceRouter, sideMenus } from "../../router/index";
 
 import "../../layout/workplace/workplace.less";
-import BreadcrumbNav from "./BreadcrumbNav"
+import BreadcrumbNav from "./BreadcrumbNav";
 
 import logo from "../../static/image/logo.png";
 

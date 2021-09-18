@@ -8,7 +8,6 @@ function deleteConfirm() {
       title: "确定要删除所选项吗？",
       icon: <ExclamationCircleOutlined />,
       content: "删除后数据不可恢复",
-      centered: true,
       okType: "danger",
       onOk: (close) => {
         _m.update({
