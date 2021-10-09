@@ -1,5 +1,5 @@
 export default {
-  baseURL: "http://127.0.0.1:4444/",
+  baseURL: "http://127.0.0.1:4444/api",
   method: "GET",
   header: {
     "Accept": "application/json",
