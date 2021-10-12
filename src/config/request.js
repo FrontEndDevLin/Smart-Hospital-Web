@@ -8,16 +8,19 @@ const requestErr = () => {
 
 }
 
-// http request 拦截器
 request.interceptors.request.use(
   (config) => {
-    const token = "token";
+    const token = localStorage.getItem("token");
     if (token) {
-      config.headers.Authorization = token;
+      config.headers.Authorization = `Bearer ${token}`;
       config.timeout = 50000 * 20
     }
     return config;
   }, requestErr,
 );
+
+request.getBaseURL = function () {
+  return config.baseURL;
+}
 
 export default request;

@@ -118,14 +118,7 @@ class Data extends React.Component {
   }
 
   componentDidMount() {
-    // request.get("home/getBaseInfo", {
-    //   params: { 
-    //     name: "Lin",
-    //     pwd: "25"
-    //   }
-    // }).then(res => {
-    //   console.log(res)
-    // })
+    
   }
 
 	onSelectChange = selectedRowKeys => {
